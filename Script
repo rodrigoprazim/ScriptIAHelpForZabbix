@@ -8,7 +8,7 @@ var Gemini = {
         if (typeof Gemini.params.api_key !== 'string' || Gemini.params.api_key === '') {
             throw 'API key for Gemini is required.';
         }
-        Gemini.params.url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
+        Gemini.params.url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
     },
     request: function(data) {
         if (!Gemini.params.api_key) {
