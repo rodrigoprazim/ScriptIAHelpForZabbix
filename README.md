@@ -6,24 +6,20 @@ Este script permite que o Zabbix envie alertas para a API Gemini (Google AI), so
 ## 📌 Requisitos
 
 - Zabbix 7.0 ou superior
-- Chave de API válida da [API Gemini](https://ai.google.dev/)
+- Chave de API válida da [API Gemini](https://aistudio.google.com/app/apikey)
 - Acesso à internet para chamadas HTTP
 
 ## ⚙️ Parâmetros obrigatórios
 
 O script espera os seguintes parâmetros no campo `value` do webhook (em formato JSON):
 
-```json
-{
-  "alert_subject": "{TRIGGER.NAME}",
-  "ip_address": "{HOST.IP}",
-  "api_key": "SUA_CHAVE_GEMINI"
-}
-```
+ - `alert_subject`: `{TRIGGER.NAME}`,
+ - `ip_address`: `{HOST.IP}`,
+ - `api_key`: `SUA_CHAVE_GEMINI`,
 
 ## 🔤 Parâmetro opcional
 
-- `language`: Define o idioma da resposta (ex: `"English"`, `"Português"`, `"pt-BR"`). Se não for definido, o script sugerirá que o usuário forneça esse parâmetro.
+- `language`: Define o idioma da resposta (ex: `"Português"`, `"pt-BR"`, `"Español"`). Se não for definido, o script sugerirá que o usuário forneça esse parâmetro, o default é Inglês.
 
 ## 🧠 O que o script faz
 
@@ -34,16 +30,18 @@ O script espera os seguintes parâmetros no campo `value` do webhook (em formato
 
 ## 🛠️ Exemplo de uso no Zabbix
 
-Configure um webhook no Zabbix com o seguinte conteúdo no campo `value`:
+- “Alerts” > “Scripts” > “Create Script”
 
-```json
-{
-  "alert_subject": "{TRIGGER.NAME}",
-  "ip_address": "{HOST.IP}",
-  "api_key": "SUA_CHAVE_GEMINI",
-  "language": "Português"
-}
-```
+ - `alert_subject`: `{TRIGGER.NAME}`,
+ - `ip_address`: `{HOST.IP}`,
+ - `api_key`: `SUA_CHAVE_GEMINI`,
+ - `language`: `PT-BR`
+
+![Exemplo de Alerta](images/new_script.png)
+
+- Acesse o painel de alertas e selecione um alerta específico.
+
+![Exemplo de Acesso](images/access_ia.png)
 
 ## 📝 Exemplo de resposta gerada
 
