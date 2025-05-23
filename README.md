@@ -11,7 +11,7 @@ Este script permite que o Zabbix envie alertas para a API Gemini (Google AI), so
 
 ## ⚙️ Parâmetros obrigatórios
 
-O script espera os seguintes parâmetros no campo `value` do webhook (em formato JSON):
+O script espera os seguintes parâmetros no campo `value` do webhook:
 
  - `alert_subject`: `{TRIGGER.NAME}`,
  - `ip_address`: `{HOST.IP}`,
@@ -53,6 +53,3 @@ O script espera os seguintes parâmetros no campo `value` do webhook (em formato
 > - Check running processes  
 > - Optimize resource usage  
 > - Consider hardware upgrades  
->  
-> Kindly do not use any text formatting such as *.  
-> And reply to me in the language: Português.
