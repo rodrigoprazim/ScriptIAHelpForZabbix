@@ -86,6 +86,10 @@ try {
     } else {
         throw 'No response from Gemini.';
     }
+
+    if (!params.language || params.language.trim() === '') {
+        result += "\n\nTip: You can specify a response language by setting the 'language' parameter, e.g., 'language: Portugues or PT-BR'.";
+    }
     
     return result;
     
