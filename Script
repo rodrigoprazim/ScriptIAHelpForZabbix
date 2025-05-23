@@ -57,14 +57,20 @@ try {
         }
     });
 
+    var message = "The alert: " + params.alert_subject + ", with the IP: " + params.ip_address + " occurred in Zabbix. " +
+        "Please suggest possible causes and solutions to resolve this issue. Do not write a long text — " +
+        "keep it around 10 lines, including causes, ideas, debugging commands, and actions to prevent future incidents. " +
+        "Kindly do not use any text formatting such as *.";
+
+    if (params.language && params.language.trim() !== '') {
+        message += " And reply to me in the language: " + params.language.trim() + ".";
+    }
+
     // Formatting the query for Gemini
     data = {
         contents: [{
             parts: [{
-                text: "O alerta: " + params.alert_subject + ", com o IP: " + params.ip_address + " aconteceu no Zabbix. " +
-                      "Sugira possíveis causas e soluções para resolver esse problema, não faça um texto grande," +
-                      "apenas cerca de 10 linhas com causas, ideias, comandos de depuração e medidas para mitigar futuros incidentes." +
-                      "Por gentileza, não utillizar formatação de texto tais como, *."
+                text: message
             }]
         }]
     };
