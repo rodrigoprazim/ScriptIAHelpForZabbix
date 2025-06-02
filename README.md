@@ -1,55 +1,69 @@
-
 # ScriptIAHelpForZabbix
 
-Este script permite que o Zabbix envie alertas para a API Gemini (Google AI), solicitando sugestões de causas e soluções para incidentes detectados. Ele gera respostas concisas com possíveis causas, comandos de depuração e medidas preventivas.
+This script allows Zabbix to send alerts to the Gemini API (Google AI), requesting suggestions for possible causes and solutions for detected incidents. It generates concise responses with potential causes, debugging commands, and preventive measures.
 
-## 📌 Requisitos
+## 📌 Requirements
 
-- Zabbix 7.0 ou superior
-- Chave de API válida da [API Gemini](https://aistudio.google.com/app/apikey)
-- Acesso à internet para chamadas HTTP
+* Zabbix 7.0 or higher
+* A valid API key from [Gemini API](https://aistudio.google.com/app/apikey)
+* Internet access for HTTP requests
 
-## ⚙️ Parâmetros obrigatórios
+## ⚙️ Required Parameters
 
-O script espera os seguintes parâmetros no campo `value` do webhook:
+The script expects the following parameters in the webhook `value` field:
 
- - `alert_subject`: `{TRIGGER.NAME}`,
- - `ip_address`: `{HOST.IP}`,
- - `api_key`: `SUA_CHAVE_GEMINI`,
+* `alert_subject`: `{TRIGGER.NAME}`
+* `ip_address`: `{HOST.IP}`
+* `api_key`: `YOUR_GEMINI_KEY`
 
-## 🔤 Parâmetro opcional
+## 🌤️ Optional Parameter
 
-- `language`: Define o idioma da resposta (ex: `"Português"`, `"pt-BR"`, `"Español"`). Se não for definido, o script sugerirá que o usuário forneça esse parâmetro, o default é Inglês.
+* `language`: Defines the response language (e.g., `"Portuguese"`, `"pt-BR"`, `"Spanish"`). If not provided, the script will suggest that the user include this parameter. The default is English.
 
-## 🧠 O que o script faz
+## 🧠 What the Script Does
 
-1. **Validação**: Verifica se os parâmetros obrigatórios estão presentes e não vazios.
-2. **Formatação**: Cria uma mensagem com detalhes do alerta e solicita uma resposta concisa da API Gemini.
-3. **Requisição**: Envia a mensagem para a API Gemini e processa a resposta.
-4. **Sugestão de idioma**: Se o parâmetro `language` não for fornecido, adiciona uma dica para o usuário incluir esse parâmetro.
+1. **Validation**: Checks whether the required parameters are present and not empty.
+2. **Formatting**: Creates a message with alert details and requests a concise response from the Gemini API.
+3. **Request**: Sends the message to the Gemini API and processes the response.
+4. **Language Suggestion**: If the `language` parameter is not provided, adds a tip suggesting the user to include it.
 
-## 🛠️ Exemplo de uso no Zabbix
+## 🛠️ Example Usage in Zabbix
 
-- “Alerts” > “Scripts” > “Create Script”
+* Go to “Alerts” > “Scripts” > “Create Script”
 
- - `alert_subject`: `{TRIGGER.NAME}`,
- - `ip_address`: `{HOST.IP}`,
- - `api_key`: `SUA_CHAVE_GEMINI`,
- - `language`: `PT-BR`
+```json
+{
+  "alert_subject": "{TRIGGER.NAME}",
+  "ip_address": "{HOST.IP}",
+  "api_key": "YOUR_GEMINI_KEY",
+  "language": "PT-BR"
+}
+```
 
-![Exemplo de Alerta](images/new_script.png)
+![Alert Example](images/new_script.png)
 
-- Acesse o painel de alertas e selecione um alerta específico.
+* Access the alert panel and select a specific alert.
 
-![Exemplo de Acesso](images/access_ia.png)
+![Access Example](images/access_ia.png)
 
-## 📝 Exemplo de resposta gerada
+## 📝 Example of Generated Response
 
-> The alert: High CPU Usage, with the IP: 192.168.1.10 occurred in Zabbix.  
-> Possible causes:  
-> - High load due to intensive processes  
-> - Insufficient resources  
-> Suggested actions:  
-> - Check running processes  
-> - Optimize resource usage  
-> - Consider hardware upgrades  
+> The alert: High CPU Usage, with the IP: 192.168.1.10 occurred in Zabbix.
+> Possible causes:
+>
+> * High load due to intensive processes
+> * Insufficient resources
+>   Suggested actions:
+> * Check running processes
+> * Optimize resource usage
+> * Consider hardware upgrades
+
+## ⭐ Star History
+
+<a href="https://www.star-history.com/#rodrigoprazim/ScriptIAHelpForZabbix&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=rodrigoprazim/ScriptIAHelpForZabbix&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=rodrigoprazim/ScriptIAHelpForZabbix&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=rodrigoprazim/ScriptIAHelpForZabbix&type=Date" />
+ </picture>
+</a>
